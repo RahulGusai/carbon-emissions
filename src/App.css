@@ -1,38 +1,107 @@
-.App {
-  text-align: center;
+.app-container {
+  height: 100vb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.App-logo {
-  height: 40vmin;
+.error-message {
+  padding: 5px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 300px;
+  min-height: 80px;
+  background-color: #ffcccc;
+  border: 1px solid red;
+  border-radius: 4px;
+  opacity: 1;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.error-message span {
+  color: red;
+}
+
+.hidden {
+  opacity: 0;
   pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.carbon-calculator {
+  min-width: 30%;
+  height: 45%;
+  background-color: teal;
+  display: flex;
+  align-items: center;
+  gap: 50px;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.form {
+  width: 90%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
+
+.form-entry {
+  margin-top: 10px;
+  margin-left: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: flex-start;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.form-entry .input-box {
+  width: 100%;
+  height: 30px;
+  border: 2px solid grey;
+  border-radius: 6px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.form-entry .drop-down {
+  width: 30%;
+}
+
+.form .submit-button {
+  margin-top: 10px;
+  align-self: center;
+}
+
+.results-container {
+  margin-right: 50px;
+  width: 500px;
+  height: 350px;
+  background-color: white;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.emissions,
+.route-data {
+  display: flex;
+  flex-direction: column;
+}
+.value {
+  font-size: 15px;
+  margin-top: 5px;
+}
+
+.label {
+  font-size: 11px;
+}
+
+.location-marker {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 15px;
+}
+
+.location-marker .emission-details {
+  display: flex;
+  flex-direction: column;
 }
