@@ -2,14 +2,24 @@ import './App.css';
 import { Button } from 'semantic-ui-react';
 import { useEffect, useRef, useState } from 'react';
 import { Icon } from 'semantic-ui-react';
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  useMapEvent,
+  Popup,
+} from 'react-leaflet';
+import 'leaflet/dist/leaflet.css';
 
-function App() {
+function App({ google }) {
   const [emissionResults, setEmissionResults] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const originRef = useRef(null);
   const destinationRef = useRef(null);
   const weightRef = useRef(null);
   const weightUnitRef = useRef(null);
+
+  const position = [28.7041, 77.1025];
 
   useEffect(() => {
     if (errorMessage) {
@@ -66,46 +76,75 @@ function App() {
     }
   };
 
+  function MyComponent() {
+    const map = useMapEvent('click', () => {
+      console.log('Clicked');
+      map.setView([40.7128, 74.006], map.getZoom());
+    });
+    return null;
+  }
+
   return (
     <>
-      <div className={`error-message ${errorMessage ? '' : 'hidden'}`}>
-        <span>{errorMessage}</span>
-      </div>
-      <div className="app-container">
-        <div className="carbon-calculator">
-          <div className="form">
-            <div className="form-entry">
-              <div class="text">Origin</div>
-              <input ref={originRef} className="input-box"></input>
-            </div>
-            <div className="form-entry">
-              <div class="text">Destination</div>
-              <input ref={destinationRef} className="input-box"></input>
-            </div>
-            <div className="form-entry">
-              <div class="text">Weight</div>
-              <input ref={weightRef} className="input-box"></input>
-            </div>
-            <div className="form-entry">
-              <div className="text">Weight Unit</div>
-              <select ref={weightUnitRef} className="input-box drop-down">
-                <option value="kg">kg</option>
-                <option value="ton">kg</option>
-              </select>
-            </div>
-            <div className="form-entry">
-              <div className="text">Mode</div>
-              <select className="input-box drop-down">
-                <option value="Road Freight">Road</option>
-              </select>
-            </div>
-            <div className="submit-button">
-              <Button size="medium" color="violet" onClick={calculateEmissions}>
-                Calculate Emissions
-              </Button>
-            </div>
+      <MapContainer
+        center={position}
+        zoom={5}
+        scrollWheelZoom={false}
+        style={{ height: '100vh', width: '100vw' }}
+      >
+        <TileLayer
+          attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+          url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+        />
+        <Marker position={position}>
+          <Popup>
+            A pretty CSS3 popup. <br /> Easily customizable.
+          </Popup>
+        </Marker>
+        <div className={`error-message ${errorMessage ? '' : 'hidden'}`}>
+          <span>{errorMessage}</span>
+        </div>
+        <div className="carbon-calculator-form">
+          <div className="form-entry">
+            <div class="text">Origin</div>
+            <input ref={originRef} className="input-box"></input>
           </div>
-          {emissionResults && (
+          <div className="form-entry">
+            <div class="text">Destination</div>
+            <input ref={destinationRef} className="input-box"></input>
+          </div>
+          <div className="form-entry">
+            <div class="text">Weight</div>
+            <input ref={weightRef} className="input-box"></input>
+          </div>
+          <div className="form-entry">
+            <div className="text">Weight Unit</div>
+            <select ref={weightUnitRef} className="input-box drop-down">
+              <option value="kg">kg</option>
+              <option value="ton">kg</option>
+            </select>
+          </div>
+          <div className="form-entry">
+            <div className="text">Mode</div>
+            <select className="input-box drop-down">
+              <option value="Road Freight">Road</option>
+            </select>
+          </div>
+          <div className="submit-button">
+            <Button size="mini" color="violet" onClick={calculateEmissions}>
+              Calculate Emissions
+            </Button>
+          </div>
+        </div>
+      </MapContainer>
+    </>
+  );
+}
+
+export default App;
+
+// {
+/* {emissionResults && (
             <div className="results-container">
               <div className="emissions">
                 <span>
@@ -140,11 +179,5 @@ function App() {
               </div>
               <div></div>
             </div>
-          )}
-        </div>
-      </div>
-    </>
-  );
-}
-
-export default App;
+          )} */
+// }

@@ -3,6 +3,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: 10000;
 }
 
 .error-message {
@@ -28,13 +29,19 @@
   pointer-events: none;
 }
 
-.carbon-calculator {
-  min-width: 30%;
-  height: 45%;
+.carbon-calculator-form {
+  padding: 10px;
+  width: auto;
+  height: auto;
   background-color: teal;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
   display: flex;
   align-items: center;
-  gap: 50px;
+  gap: 10px;
+  z-index: 10000;
+  border-radius: 10px;
 }
 
 .form {
@@ -44,29 +51,33 @@
 }
 
 .form-entry {
-  margin-top: 10px;
-  margin-left: 10px;
   display: flex;
   flex-direction: column;
   gap: 5px;
   align-items: flex-start;
   justify-content: center;
+  font-size: 12px;
+}
+
+.form-entry .text {
+  font-weight: bold;
 }
 
 .form-entry .input-box {
-  width: 100%;
+  width: 150px;
   height: 30px;
   border: 2px solid grey;
-  border-radius: 6px;
+  border-radius: 5px;
 }
 
 .form-entry .drop-down {
-  width: 30%;
+  width: 100px;
+  height: 25px;
 }
 
-.form .submit-button {
-  margin-top: 10px;
-  align-self: center;
+.carbon-calculator-form .submit-button {
+  margin-bottom: 5px;
+  align-self: flex-end;
 }
 
 .results-container {
@@ -100,7 +111,6 @@
   gap: 10px;
   font-size: 15px;
 }
-
 .location-marker .emission-details {
   display: flex;
   flex-direction: column;
