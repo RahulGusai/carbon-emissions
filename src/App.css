@@ -6,21 +6,42 @@
   z-index: 10000;
 }
 
-.error-message {
-  padding: 5px;
+.error-message-container {
   position: absolute;
   top: 10px;
   right: 10px;
-  width: 300px;
-  min-height: 80px;
+  width: auto;
+  height: auto;
+  min-height: 50px;
+  min-width: 100px;
+  max-width: 400px;
+  max-height: 100px;
   background-color: #ffcccc;
   border: 1px solid red;
   border-radius: 4px;
   opacity: 1;
   transition: opacity 0.3s ease-in-out;
+  z-index: 10000;
+  font-size: 15px;
+  display: flex;
+  gap: 15px;
 }
 
-.error-message span {
+.error-message-container .error-message-prefix-bar {
+  display: inline-block;
+  height: auto;
+  width: 8px;
+  background-color: red;
+}
+
+.error-message-container .error-message-text {
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.error-message-text span {
   color: red;
 }
 
@@ -29,19 +50,53 @@
   pointer-events: none;
 }
 
+.input-container {
+  width: auto;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  z-index: 10000;
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  border-radius: 10px;
+}
+
+.input-container .tab-selector {
+  width: 200px;
+  height: 35px;
+  display: flex;
+  gap: 0px;
+  font-size: 14px;
+  /* font-weight: bold; */
+  margin-left: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.tab-selector * {
+  background-color: teal;
+  cursor: pointer;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+}
+
+.grey {
+  background-color: grey;
+}
+
 .carbon-calculator-form {
   padding: 10px;
   width: auto;
   height: auto;
   background-color: teal;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
   display: flex;
   align-items: center;
   gap: 10px;
-  z-index: 10000;
-  border-radius: 10px;
+  border-radius: inherit;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .form {
@@ -59,10 +114,6 @@
   font-size: 14px;
 }
 
-.form-entry .text {
-  font-weight: bold;
-}
-
 .form-entry .input-box {
   width: 150px;
   height: 30px;
@@ -72,7 +123,6 @@
 
 .form-entry .drop-down {
   width: 100px;
-  height: 25px;
 }
 
 .carbon-calculator-form .submit-button {
@@ -82,17 +132,19 @@
 
 .results-container {
   width: 300px;
-  height: 350px;
+  height: 400px;
   background-color: teal;
   padding: 10px;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
   position: absolute;
   left: 10px;
   top: 10px;
   z-index: 10000;
   border-radius: 10px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
 .emissions,
@@ -100,8 +152,24 @@
   display: flex;
   flex-direction: column;
 }
+
+.emission-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-size: 13px;
+}
+
+.emissions .heading {
+  font-weight: 700;
+}
+.route-data .heading {
+  font-weight: 700;
+}
+
 .value {
   font-size: 15px;
+  font-weight: 500;
   margin-top: 5px;
 }
 
@@ -118,4 +186,8 @@
 .location-marker .emission-details {
   display: flex;
   flex-direction: column;
+}
+
+.offset-button {
+  align-self: center;
 }
