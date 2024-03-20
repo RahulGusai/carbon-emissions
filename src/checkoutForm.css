@@ -1,0 +1,122 @@
+.offset-page {
+  width: 100%;
+  height: 100vh;
+  background-color: teal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.offset-page .form-container {
+  background-color: white;
+  padding: 15px;
+  width: auto;
+  height: auto;
+  box-shadow: 2px 2px 5px 0px #005b44;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-container .buttons-group {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.form-container .buttons-group * {
+  width: 150px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+  font-weight: 500;
+  align-items: center;
+}
+
+.form-subheading {
+  font-weight: bold;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.form-field input,
+select {
+  border: 1px solid #e8e7e6;
+  border-radius: 6px;
+  height: 35px;
+}
+
+.form-field .multiple-input-inline {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  flex: 1;
+}
+
+.multiple-input-inline * {
+  flex: 1;
+}
+
+.checkbox {
+  margin-top: 5px;
+  gap: 5px;
+}
+
+.checkbox label {
+  padding: 1px;
+}
+
+.submit-buttons {
+  justify-content: center;
+}
+
+.submit-buttons * {
+  width: 15%;
+}
+
+.error-label {
+  color: red;
+  font-size: 13px;
+}
+
+.offset-types-container {
+  display: flex;
+  gap: 5px;
+  opacity: 1;
+  max-height: auto;
+}
+
+.offset-type {
+  height: auto;
+  width: auto;
+  border: 1px solid green;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  gap: 2px;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.hidden {
+  opacity: 0;
+  max-height: 0;
+  pointer-events: none;
+}
+
+.offset-type img {
+  width: 20px;
+  height: 20px;
+}
+
+.offset-type label {
+  font-size: 10px;
+  font-weight: 600;
+}

@@ -14,6 +14,7 @@ import {
 } from 'react-leaflet';
 import polyline from '@mapbox/polyline';
 import 'leaflet/dist/leaflet.css';
+import CheckoutForm from './checkoutForm';
 
 function App() {
   const [emissionResults, setEmissionResults] = useState(null);
@@ -25,6 +26,7 @@ function App() {
   const destinationRef = useRef(null);
   const weightRef = useRef(null);
   const weightUnitRef = useRef(null);
+  const offsetPageElem = useRef(null);
 
   const position = [28.7041, 77.1025];
 
@@ -170,6 +172,10 @@ function App() {
 
   function handleMapReadyEvent(map) {
     map.target.zoomControl.setPosition('topright');
+  }
+
+  function handleOffsetEmissions() {
+    offsetPageElem.current?.scrollIntoView({ behavior: 'smooth' });
   }
 
   return (
@@ -339,11 +345,18 @@ function App() {
             ></Icon>
             <span>{`${emissionResults.destination.city}, ${emissionResults.destination.country}`}</span>
           </div>
-          <Button size="medium" color="olive" inverted>
+          <Button
+            size="medium"
+            color="olive"
+            inverted
+            onClick={handleOffsetEmissions}
+          >
             Offset Carbon Emissions
           </Button>
         </div>
       )}
+
+      <CheckoutForm offsetPageElem={offsetPageElem}></CheckoutForm>
     </>
   );
 }
