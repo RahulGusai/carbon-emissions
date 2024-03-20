@@ -68,13 +68,13 @@
   display: flex;
   gap: 0px;
   font-size: 14px;
-  /* font-weight: bold; */
+  font-weight: 450;
   margin-left: 10px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Muli';
 }
 
 .tab-selector * {
-  background-color: teal;
+  background-color: beige;
   cursor: pointer;
   width: 50%;
   display: flex;
@@ -84,19 +84,19 @@
 }
 
 .grey {
-  background-color: grey;
+  background-color: #b9b9ad;
 }
 
 .carbon-calculator-form {
   padding: 10px;
   width: auto;
   height: auto;
-  background-color: teal;
+  background-color: beige;
   display: flex;
   align-items: center;
   gap: 10px;
   border-radius: inherit;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Muli';
 }
 
 .form {
@@ -132,8 +132,8 @@
 
 .results-container {
   width: 300px;
-  height: 400px;
-  background-color: teal;
+  height: auto;
+  background-color: beige;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -144,7 +144,7 @@
   top: 10px;
   z-index: 10000;
   border-radius: 10px;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  font-family: 'Muli';
 }
 
 .emissions,

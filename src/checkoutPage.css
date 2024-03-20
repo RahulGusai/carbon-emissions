@@ -1,10 +1,22 @@
 .offset-page {
   width: 100%;
   height: 100vh;
-  background-color: teal;
+  background-color: beige;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.offset-page .outer-container {
+  height: auto;
+  width: auto;
+  display: flex;
+}
+
+.offset-page .banner {
+  background-color: #7b7b6e;
+  width: 400px;
+  height: inherit;
 }
 
 .offset-page .form-container {
@@ -12,10 +24,18 @@
   padding: 15px;
   width: auto;
   height: auto;
-  box-shadow: 2px 2px 5px 0px #005b44;
   display: flex;
   flex-direction: column;
   gap: 10px;
+}
+
+label {
+  font-family: 'Muli';
+}
+
+.form-container > label {
+  font-weight: 700;
+  margin-bottom: 5px;
 }
 
 .form-container .buttons-group {
@@ -44,6 +64,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
+  gap: 5px;
 }
 
 .form-field input,
@@ -93,16 +114,21 @@ select {
   max-height: auto;
 }
 
+.offset-types-container label {
+  font-size: 15px;
+}
+
 .offset-type {
   height: auto;
   width: auto;
-  border: 1px solid green;
+  border: 1px solid #7b7b6e;
   border-radius: 10px;
   padding: 5px;
   display: flex;
   gap: 2px;
   flex-direction: column;
   align-items: flex-start;
+  cursor: pointer;
 }
 
 .hidden {
@@ -114,9 +140,15 @@ select {
 .offset-type img {
   width: 20px;
   height: 20px;
+  cursor: pointer;
 }
 
 .offset-type label {
   font-size: 10px;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.highlight {
+  background-color: beige;
 }

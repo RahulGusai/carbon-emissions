@@ -14,7 +14,8 @@ import {
 } from 'react-leaflet';
 import polyline from '@mapbox/polyline';
 import 'leaflet/dist/leaflet.css';
-import CheckoutForm from './checkoutForm';
+import CheckoutForm from './checkoutPage';
+import CheckoutPage from './checkoutPage';
 
 function App() {
   const [emissionResults, setEmissionResults] = useState(null);
@@ -284,12 +285,7 @@ function App() {
             </select>
           </div>
           <div className="submit-button">
-            <Button
-              size="small"
-              color="olive"
-              inverted
-              onClick={calculateEmissions}
-            >
+            <Button size="small" color="blue" onClick={calculateEmissions}>
               Calculate Emissions
             </Button>
           </div>
@@ -324,7 +320,7 @@ function App() {
               circular
               name="truck"
               size="large"
-              color="olive"
+              color="blue"
               inverted
             ></Icon>
             <div className="emission-details">
@@ -345,18 +341,13 @@ function App() {
             ></Icon>
             <span>{`${emissionResults.destination.city}, ${emissionResults.destination.country}`}</span>
           </div>
-          <Button
-            size="medium"
-            color="olive"
-            inverted
-            onClick={handleOffsetEmissions}
-          >
+          <Button size="medium" color="blue" onClick={handleOffsetEmissions}>
             Offset Carbon Emissions
           </Button>
         </div>
       )}
 
-      <CheckoutForm offsetPageElem={offsetPageElem}></CheckoutForm>
+      <CheckoutPage offsetPageElem={offsetPageElem}></CheckoutPage>
     </>
   );
 }
