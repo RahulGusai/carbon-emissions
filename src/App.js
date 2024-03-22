@@ -14,8 +14,8 @@ import {
 } from 'react-leaflet';
 import polyline from '@mapbox/polyline';
 import 'leaflet/dist/leaflet.css';
-import CheckoutForm from './checkoutPage';
 import CheckoutPage from './checkoutPage';
+import env_vars from './env';
 
 function App() {
   const [emissionResults, setEmissionResults] = useState(null);
@@ -74,11 +74,18 @@ function App() {
       }),
     };
 
-    const apiUrl = 'http://127.0.0.1:8000/emissions/freight/';
+    let apiUrl = env_vars.API_URL_DEV;
+    if (env_vars.MODE === 'prod') {
+      apiUrl = env_vars.API_URL_PROD;
+    }
+    console.log(apiUrl);
 
     try {
       setIsLoading(true);
-      const response = await fetch(apiUrl, requestOptions);
+      const response = await fetch(
+        `${apiUrl}/emissions/freight/`,
+        requestOptions
+      );
       const data = await response.json();
 
       if (response.status !== 200) {
@@ -87,7 +94,6 @@ function App() {
         setErrorMessage(errorMessage);
       } else {
         const { route, emissions } = data;
-        console.log(data);
         setEmissionResults((emissionResults) => {
           return {
             ...emissionResults,
