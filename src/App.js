@@ -37,7 +37,7 @@ function App() {
     if (errorMessage) {
       const timer = setTimeout(() => {
         setErrorMessage(null);
-      }, 3000);
+      }, 5000);
       return () => clearTimeout(timer);
     }
   }, [errorMessage]);
@@ -260,7 +260,7 @@ function App() {
             className={`${isGoodsSelected ? 'tab' : 'tab grey'}`}
           >
             <div>Goods</div>
-            <img src={truck} alt="goods"></img>
+            <img className="goods-truck-image" src={truck} alt="goods"></img>
           </div>
           <div
             onClick={() => {
@@ -269,7 +269,11 @@ function App() {
             className={`${isGoodsSelected ? 'tab grey' : 'tab'}`}
           >
             <div>Oil</div>
-            <img src={oilTruck} alt="oilTruck"></img>
+            <img
+              className="oil-truck-image"
+              src={oilTruck}
+              alt="oilTruck"
+            ></img>
           </div>
         </div>
         <div className="carbon-calculator-form">

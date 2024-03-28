@@ -84,7 +84,12 @@
   border-radius: 10px 10px 0 0;
 }
 
-.tab img {
+.tab .oil-truck-image {
+  width: 25px;
+  height: 25px;
+}
+
+.tab .goods-truck-image {
   width: 20px;
   height: 20px;
 }
