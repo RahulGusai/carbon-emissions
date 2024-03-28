@@ -73,17 +73,23 @@
   font-family: 'Muli';
 }
 
-.tab-selector * {
+.tab-selector .tab {
   background-color: beige;
   cursor: pointer;
   width: 50%;
   display: flex;
   justify-content: center;
   align-items: center;
+  gap: 5px;
   border-radius: 10px 10px 0 0;
 }
 
-.grey {
+.tab img {
+  width: 20px;
+  height: 20px;
+}
+
+.tab-selector .grey {
   background-color: #b9b9ad;
 }
 

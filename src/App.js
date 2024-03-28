@@ -16,6 +16,8 @@ import polyline from '@mapbox/polyline';
 import 'leaflet/dist/leaflet.css';
 import CheckoutPage from './checkoutPage';
 import env_vars from './env';
+import truck from './images/truck.png';
+import oilTruck from './images/oil-truck.png';
 
 function App() {
   const [emissionResults, setEmissionResults] = useState(null);
@@ -167,9 +169,7 @@ function App() {
   function ErrorMessageComponent({ errorMessage }) {
     if (errorMessage) {
       return (
-        <div
-          className={`error-message-container ${errorMessage ? '' : 'hidden'}`}
-        >
+        <div className="error-message-container">
           <span className="error-message-prefix-bar"></span>
           <span className="error-message-text">{errorMessage}</span>
         </div>
@@ -254,20 +254,22 @@ function App() {
       <div className="input-container">
         <div className="tab-selector">
           <div
-            className={`${isGoodsSelected ? '' : 'grey'}`}
             onClick={() => {
               setIsGoodsSelected(true);
             }}
+            className={`${isGoodsSelected ? 'tab' : 'tab grey'}`}
           >
-            Goods
+            <div>Goods</div>
+            <img src={truck} alt="goods"></img>
           </div>
           <div
-            className={`${isGoodsSelected ? 'grey' : ''}`}
             onClick={() => {
               setIsGoodsSelected(false);
             }}
+            className={`${isGoodsSelected ? 'tab grey' : 'tab'}`}
           >
-            Oil
+            <div>Oil</div>
+            <img src={oilTruck} alt="oilTruck"></img>
           </div>
         </div>
         <div className="carbon-calculator-form">
@@ -298,62 +300,63 @@ function App() {
         </div>
       </div>
       {emissionResults && (
-        <div className="results-container">
-          <div className="emissions">
-            <span className="heading">Emissions</span>
-            <span className="value">{`${emissionResults.co2e}kg`}</span>
-            <span className="label">CO2e emissions</span>
-          </div>
-          <div className="route-data">
-            <span className="heading">Route Data</span>
-            <span className="value">
-              {`${emissionResults.distance_in_kms}KM`}
-            </span>
-            <span className="label">Distance</span>
-          </div>
-          <div className="location-marker">
-            <Icon
-              circular
-              name="map marker alternate"
-              size="large"
-              color="grey"
-              inverted
-            ></Icon>
-            <span>{`${emissionResults.origin.city}, ${emissionResults.origin.country}`}</span>
-          </div>
-          <div className="location-marker">
-            <Icon
-              circular
-              name="truck"
-              size="large"
-              color="blue"
-              inverted
-            ></Icon>
-            <div className="emission-details">
-              <span>{`${emissionResults.distance_in_kms}km`}</span>
-              <div>
-                <span>{`${emissionResults.co2e}kg `}</span>
-                <span>of CO2e</span>
+        <>
+          <div className="results-container">
+            <div className="emissions">
+              <span className="heading">Emissions</span>
+              <span className="value">{`${emissionResults.co2e}kg`}</span>
+              <span className="label">CO2e emissions</span>
+            </div>
+            <div className="route-data">
+              <span className="heading">Route Data</span>
+              <span className="value">
+                {`${emissionResults.distance_in_kms}KM`}
+              </span>
+              <span className="label">Distance</span>
+            </div>
+            <div className="location-marker">
+              <Icon
+                circular
+                name="map marker alternate"
+                size="large"
+                color="grey"
+                inverted
+              ></Icon>
+              <span>{`${emissionResults.origin.city}, ${emissionResults.origin.country}`}</span>
+            </div>
+            <div className="location-marker">
+              <Icon
+                circular
+                name="truck"
+                size="large"
+                color="blue"
+                inverted
+              ></Icon>
+              <div className="emission-details">
+                <span>{`${emissionResults.distance_in_kms}km`}</span>
+                <div>
+                  <span>{`${emissionResults.co2e}kg `}</span>
+                  <span>of CO2e</span>
+                </div>
               </div>
             </div>
+            <div className="location-marker">
+              <Icon
+                circular
+                name="map marker alternate"
+                size="large"
+                color="grey"
+                inverted
+              ></Icon>
+              <span>{`${emissionResults.destination.city}, ${emissionResults.destination.country}`}</span>
+            </div>
+            <Button size="medium" color="blue" onClick={handleOffsetEmissions}>
+              Offset Carbon Emissions
+            </Button>
           </div>
-          <div className="location-marker">
-            <Icon
-              circular
-              name="map marker alternate"
-              size="large"
-              color="grey"
-              inverted
-            ></Icon>
-            <span>{`${emissionResults.destination.city}, ${emissionResults.destination.country}`}</span>
-          </div>
-          <Button size="medium" color="blue" onClick={handleOffsetEmissions}>
-            Offset Carbon Emissions
-          </Button>
-        </div>
+          <CheckoutPage offsetPageElem={offsetPageElem}></CheckoutPage>
+        </>
       )}
-
-      <CheckoutPage offsetPageElem={offsetPageElem}></CheckoutPage>
     </>
   );
 }

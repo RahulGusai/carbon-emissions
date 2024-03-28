@@ -10,22 +10,30 @@
 .offset-page .outer-container {
   height: auto;
   width: auto;
+  min-height: 30%;
   display: flex;
+  opacity: 1;
 }
 
 .offset-page .banner {
   background-color: #7b7b6e;
-  width: 400px;
-  height: inherit;
+  width: 350px;
+  min-height: 750px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .offset-page .form-container {
   background-color: white;
   padding: 15px;
-  width: auto;
+  width: 700px;
+  min-height: 750px;
   height: auto;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -151,4 +159,25 @@ select {
 
 .highlight {
   background-color: beige;
+}
+
+.banner .info {
+  padding: 10px;
+  font-family: 'Muli';
+  color: white;
+  font-size: 18px;
+  word-spacing: 3px;
+  font-weight: bold;
+}
+
+.form-container .submission-result {
+  font-size: 16px;
+  line-height: 25px;
+}
+
+.result-icon {
+  margin-left: 5px;
+  margin-bottom: -5px;
+  width: 30px;
+  height: 30px;
 }
