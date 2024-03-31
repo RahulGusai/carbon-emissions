@@ -27,8 +27,9 @@ function App() {
 
   const originRef = useRef(null);
   const destinationRef = useRef(null);
-  const weightRef = useRef(null);
-  const weightUnitRef = useRef(null);
+  const measurementRef = useRef(null);
+  const measurementUnitRef = useRef(null);
+  const fuelTypeElem = useRef(null);
   const offsetPageElem = useRef(null);
 
   const position = [28.7041, 77.1025];
@@ -50,13 +51,13 @@ function App() {
   const calculateEmissions = async () => {
     const origin = originRef.current.value;
     const destination = destinationRef.current.value;
-    const weight = weightRef.current.value;
-    const weightUnit = weightUnitRef.current.value;
+    const measurement = measurementRef.current.value;
+    const measurementUnit = measurementUnitRef.current.value;
 
     if (
       origin.length === 0 ||
       destination.length === 0 ||
-      weight.length === 0
+      measurement.length === 0
     ) {
       setErrorMessage('You might be missing an input.');
       return;
@@ -70,9 +71,11 @@ function App() {
       body: JSON.stringify({
         from_city: origin,
         to_city: destination,
-        weight_unit: weightUnit,
-        weight: weight,
+        measurement_unit: measurementUnit,
+        measurement: measurement,
         category: 'Road Freight',
+        fuel_type: fuelTypeElem.current.value,
+        freight_type: isGoodsSelected ? 'goods' : 'oil',
       }),
     };
 
@@ -136,13 +139,13 @@ function App() {
       <>
         <div className="form-entry">
           <div className="text">Weight</div>
-          <input ref={weightRef} className="input-box"></input>
+          <input ref={measurementRef} className="input-box"></input>
         </div>
 
         <div className="form-entry">
           <div className="text">Weight Unit</div>
-          <select ref={weightUnitRef} className="input-box drop-down">
-            <option value="kg">kg</option>
+          <select ref={measurementUnitRef} className="input-box drop-down">
+            <option value="kg">Kg</option>
             <option value="ton">ton</option>
           </select>
         </div>
@@ -151,14 +154,14 @@ function App() {
       <>
         <div className="form-entry">
           <div className="text">Volume</div>
-          <input ref={weightRef} className="input-box"></input>
+          <input ref={measurementRef} className="input-box"></input>
         </div>
 
         <div className="form-entry">
           <div className="text">Volume Unit</div>
-          <select ref={weightUnitRef} className="input-box drop-down">
+          <select ref={measurementUnitRef} className="input-box drop-down">
+            <option value="litre">litre</option>
             <option value="gallon">gal</option>
-            <option value="litre">l</option>
           </select>
         </div>
       </>
@@ -293,6 +296,14 @@ function App() {
             <div className="text">Mode</div>
             <select className="input-box drop-down">
               <option value="Road Freight">Road</option>
+            </select>
+          </div>
+          <div className="form-entry">
+            <div className="text">Fuel Type</div>
+            <select ref={fuelTypeElem} className="input-box drop-down">
+              <option value="Diesel">Diesel</option>
+              <option value="B20_Diesel">B20 Diesel</option>
+              <option value="Biodiesel">Biodiesel</option>
             </select>
           </div>
           <div className="submit-button">
