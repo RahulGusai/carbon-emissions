@@ -80,7 +80,6 @@ function App() {
     if (env_vars.MODE === 'prod') {
       apiUrl = env_vars.API_URL_PROD;
     }
-    console.log(apiUrl);
 
     try {
       setIsLoading(true);
